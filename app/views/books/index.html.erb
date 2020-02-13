@@ -1,0 +1,49 @@
+
+	<h1>
+		<strong>Books</strong>
+	</h1>
+
+	<main class="clearfix">
+
+			<table width=750>
+					<tr>
+					<td><strong>Title</strong></td><td><strong>Body</strong></td>
+					<% @books.each do |book| %>
+      				<tr>
+					<div class="book-list1">
+						<td><%= book.title %></td>
+						<td><%= book.body %></td>
+						<td><%= link_to "show", book_path(book) %></td>
+						<td><%= link_to "edit", edit_book_path(book) %></td>
+						<td><%= link_to "destroy", book_path(book), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+					</div>
+					</tr>
+        			<% end %>
+			</table>
+
+
+
+	</main>
+
+			<h2><strong>New book</strong></h2>
+	<%= form_for(@book) do |f| %>
+	<% if @book.errors.any? %>
+    <div class = "alert alert-warning">
+        <ul>
+            <% @book.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+	<% end %>
+
+    <p>Title</p>
+    <%= f.text_field :title %>
+
+    <p>Body</p>
+    <%= f.text_area :body %>
+
+    <br>
+    <%= f.submit 'Create Book' %>
+
+<% end %>

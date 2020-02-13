@@ -1,0 +1,13 @@
+<p class="success"><%= flash[:complete] %></p>
+
+<p id="notice"><%= notice %></p>
+
+
+<td>Title:<p><strong><%= @book.title %></strong></p></td>
+<td>Body:</td><p><strong><%= @book.body %></strong></p>
+
+
+
+<%= link_to "Edit", edit_book_path(@book) %>
+|
+<%= link_to("Back","/books") %>
